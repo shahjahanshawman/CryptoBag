@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity">
+
+
+    <TextView
+        android:id="@+id/nameofCrypto"
+        android:layout_width="112dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="136dp"
+        android:layout_marginRight="136dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/abbr"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/abbr"
+        android:layout_width="68dp"
+        android:layout_height="21dp"
+        android:layout_marginEnd="180dp"
+        android:layout_marginRight="180dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameofCrypto" />
+
+    <TextView
+        android:id="@+id/value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Value(USD)"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/valueNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/value"
+        app:layout_constraintEnd_toEndOf="@+id/abbr"
+        app:layout_constraintStart_toStartOf="@+id/nameofCrypto"
+        app:layout_constraintTop_toTopOf="@+id/value" />
+
+    <TextView
+        android:id="@+id/change1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Change(1h)"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/value" />
+
+    <TextView
+        android:id="@+id/change1Num"
+        android:layout_width="52dp"
+        android:layout_height="15dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/change1"
+        app:layout_constraintEnd_toEndOf="@+id/abbr"
+        app:layout_constraintStart_toStartOf="@+id/nameofCrypto"
+        app:layout_constraintTop_toTopOf="@+id/change1" />
+
+    <TextView
+        android:id="@+id/market"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Marketcap"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/change7" />
+
+    <TextView
+        android:id="@+id/change24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Change(24h)"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/change1" />
+
+    <TextView
+        android:id="@+id/change7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="176dp"
+        android:text="Change(7d)"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/volume24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="248dp"
+        android:text="Volume(24h)"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/change24Num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/change24"
+        app:layout_constraintEnd_toEndOf="@+id/abbr"
+        app:layout_constraintStart_toStartOf="@+id/nameofCrypto"
+        app:layout_constraintTop_toTopOf="@+id/change24" />
+
+    <TextView
+        android:id="@+id/change7Num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/change7"
+        app:layout_constraintEnd_toEndOf="@+id/abbr"
+        app:layout_constraintStart_toStartOf="@+id/nameofCrypto"
+        app:layout_constraintTop_toTopOf="@+id/change7" />
+
+    <TextView
+        android:id="@+id/marketNum"
+        android:layout_width="134dp"
+        android:layout_height="0dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/market"
+        app:layout_constraintEnd_toEndOf="@+id/abbr"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nameofCrypto"
+        app:layout_constraintTop_toTopOf="@+id/market"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/volume24Num"
+        android:layout_width="152dp"
+        android:layout_height="20dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/volume24"
+        app:layout_constraintEnd_toEndOf="@+id/abbr"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nameofCrypto"
+        app:layout_constraintTop_toTopOf="@+id/volume24"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="91dp"
+        android:layout_height="107dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:clickable="false"
+        app:layout_constraintEnd_toStartOf="@+id/nameofCrypto"
+        app:layout_constraintTop_toTopOf="@+id/nameofCrypto"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <Button
+        android:id="@+id/search"
+        android:layout_width="51dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:foreground="@android:drawable/ic_menu_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
