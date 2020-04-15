@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.example.cryptobag.Entities.CoinLoreResponse;
 import com.example.cryptobag.Entities.Coin;
 import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,10 +42,12 @@ public class MainActivity extends AppCompatActivity  {
         Log.d(TAG,"Reached");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         RecyclerView rview = findViewById(R.id.rview);
         rview.setHasFixedSize(true);
         rview.setLayoutManager(new LinearLayoutManager(this));
 
+        new MyTask().execute();
 
         inWide = findViewById(R.id.detailContainer)!=null;
         Log.d(TAG, "boolean " + String.valueOf(inWide));
@@ -59,38 +63,6 @@ public class MainActivity extends AppCompatActivity  {
 
         mAdapter = new MyAdapter( new ArrayList<Coin>(), listener);
         rview.setAdapter(mAdapter);
-
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://api.coinlore.net")
-                .addConverterFactory(GsonConverterFactory.create()).build();
-
-        CoinService service = retrofit.create(CoinService.class);
-
-        Call<CoinLoreResponse> coinsCall = service.getAllCoins();
-        Log.d(TAG, "finished response");
-
-
-        coinsCall.enqueue(new Callback<CoinLoreResponse>() {
-
-            @Override
-            public void onResponse(Call<CoinLoreResponse> call, Response<CoinLoreResponse> response) {
-
-                Log.d(TAG, "reached response");
-                if(response.isSuccessful()){
-
-                    coins = response.body().getData();
-                    ((MyAdapter) mAdapter).setCoins(coins);
-
-
-                } else {
-                    Log.d(TAG, "onResponse: Error is "+ response.errorBody());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CoinLoreResponse> call, Throwable t) {
-                Log.d(TAG, "onFailure: ON FAILURE IS "+ t.getLocalizedMessage());
-            }
-        });
 
 
 
@@ -122,6 +94,38 @@ public class MainActivity extends AppCompatActivity  {
             transaction.commit();
         }
 
+    }
+
+    public class MyTask extends AsyncTask<Void,Integer,Integer> {
+
+
+
+        @Override
+        protected Integer doInBackground(Void... voids) {
+            Retrofit retrofit = new Retrofit.Builder().baseUrl("https://api.coinlore.net")
+                    .addConverterFactory(GsonConverterFactory.create()).build();
+
+            CoinService service = retrofit.create(CoinService.class);
+
+            Call<CoinLoreResponse> coinsCall = service.getAllCoins();
+            Log.d(TAG, "finished response");
+
+            Response<CoinLoreResponse>  response = null;
+            try {
+                response = coinsCall.execute();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            coins = response.body().getData();
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Integer integer) {
+            super.onPostExecute(integer);
+            ((MyAdapter) mAdapter).setCoins(coins);
+        }
     }
 
 
